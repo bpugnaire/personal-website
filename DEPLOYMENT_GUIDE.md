@@ -49,44 +49,11 @@ git push -u origin main
 
 ### Step 4: Access Your Site
 - If repo is `personal-website`: `https://YOUR_USERNAME.github.io/personal-website/`
-- If repo is `YOUR_USERNAME.github.io`: `https://YOUR_USERNAME.github.io/`
-
----
-
-## Option 2: Use as Subfolder in Current Repo
-
-Keep it in your existing monorepo:
-
-### Step 1: Add and Commit
-```bash
-cd /Users/bpugnaire/Dev/github
-
-# Add the personal-website folder
-git add personal-website/
-
-# Commit
-git commit -m "Add personal website with gradient buttons"
-
-# Push
-git push origin master  # or 'main' depending on your branch
-```
-
-### Step 2: Create Separate Workflow
-Move the workflow to the parent level:
-```bash
-mkdir -p .github/workflows
-mv personal-website/.github/workflows/deploy.yml .github/workflows/deploy-website.yml
-```
-
-Edit the workflow to specify the working directory:
-```yaml
-# Add under each step that needs it:
-working-directory: ./personal-website
 ```
 
 ---
 
-## Quick Deploy (Option 1 - Recommended)
+## Quick Deploy
 
 Here's a complete script to deploy as a separate repo:
 

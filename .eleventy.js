@@ -8,6 +8,9 @@ module.exports = function(eleventyConfig) {
   
   // Copy CNAME file if it exists (for custom domain)
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  
+  // Copy .nojekyll to tell GitHub Pages not to use Jekyll
+  eleventyConfig.addPassthroughCopy("src/.nojekyll");
 
   // Markdown configuration - simplified for now
   // The default markdown-it configuration works fine
