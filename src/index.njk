@@ -1,0 +1,67 @@
+---
+layout: base.njk
+title: Home
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">Hi, I'm Baptiste 👋</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+    <p class="hero-description">
+      I specialize in designing, building, and deploying scalable AI solutions for enterprise use cases. 
+      From Generative AI and NLP to MLOps and cloud infrastructure, I help organizations turn complex 
+      data challenges into impactful results.
+    </p>
+    <div class="hero-cta">
+      <a href="/about/" class="btn btn-primary"><span>Learn More About Me</span></a>
+      <a href="/projects/" class="btn btn-secondary"><span>View My Work</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="featured-projects">
+  <div class="container">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      {# Projects will be populated from _data/projects.js #}
+      <div class="project-card">
+        <h3>Project Name</h3>
+        <p>Brief description of what this project does and why it's interesting.</p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+    </div>
+    <a href="/projects/" class="btn btn-link">View All Projects →</a>
+  </div>
+</section>
+
+<section class="recent-posts">
+  <div class="container">
+    <h2>Recent Posts</h2>
+    <div class="posts-list">
+      {% set postslist = collections.posts %}
+      {% for post in postslist.slice(0, 3) %}
+      <article class="post-card">
+        {% if post.data.coverImage %}
+        <div class="post-card-image">
+          <a href="{{ post.url }}">
+            <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" />
+          </a>
+        </div>
+        {% endif %}
+        <div class="post-card-content">
+          <h3>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h3>
+          <time datetime="{{ post.date }}">{{ post.date | readableDate }}</time>
+          <p>{{ post.data.description or (post.templateContent | excerpt) }}</p>
+          <a href="{{ post.url }}" class="read-more">Read more →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <a href="/blog/" class="btn btn-link">View All Posts →</a>
+  </div>
+</section>

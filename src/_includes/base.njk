@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  
+  <!-- Google Fonts - DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-simple.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  {% include "header.njk" %}
+  
+  <main class="main-content">
+    {{ content | safe }}
+  </main>
+  
+  {% include "footer.njk" %}
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

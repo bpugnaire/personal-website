@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: Blog
+---
+
+<section class="blog-section">
+  <div class="container">
+    <h1>Blog</h1>
+    <p class="section-intro">
+      Thoughts on software development, technology, and things I'm learning.
+    </p>
+    
+    <div class="posts-list">
+      {% set postslist = collections.posts %}
+      {% if postslist.length > 0 %}
+        {% for post in postslist %}
+        <article class="post-card">
+          {% if post.data.coverImage %}
+          <div class="post-card-image">
+            <a href="{{ post.url }}">
+              <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" />
+            </a>
+          </div>
+          {% endif %}
+          <div class="post-card-content">
+            <h2>
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h2>
+            <div class="post-meta">
+              <time datetime="{{ post.date }}">{{ post.date | readableDate }}</time>
+              {% if post.data.tags %}
+              <div class="post-tags">
+                {% for tag in post.data.tags %}
+                {% if tag != "post" %}
+                <span class="tag">{{ tag }}</span>
+                {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+            <p>{{ post.data.description or (post.templateContent | excerpt) }}</p>
+            <a href="{{ post.url }}" class="read-more">Read more →</a>
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        <p>No blog posts yet. Check back soon!</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
