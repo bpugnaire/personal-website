@@ -13,8 +13,8 @@ title: Home
       data challenges into impactful results.
     </p>
     <div class="hero-cta">
-      <a href="/about/" class="btn btn-primary"><span>Learn More About Me</span></a>
-      <a href="/projects/" class="btn btn-secondary"><span>View My Work</span></a>
+      <a href="{{ '/about/' | url }}" class="btn btn-primary"><span>Learn More About Me</span></a>
+      <a href="{{ '/projects/' | url }}" class="btn btn-secondary"><span>View My Work</span></a>
     </div>
   </div>
 </section>
@@ -33,7 +33,7 @@ title: Home
         </div>
       </div>
     </div>
-    <a href="/projects/" class="btn btn-link">View All Projects →</a>
+    <a href="{{ '/projects/' | url }}" class="btn btn-link">View All Projects →</a>
   </div>
 </section>
 
@@ -46,22 +46,22 @@ title: Home
       <article class="post-card">
         {% if post.data.coverImage %}
         <div class="post-card-image">
-          <a href="{{ post.url }}">
-            <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" />
+          <a href="{{ post.url | url }}">
+            <img src="{{ post.data.coverImage | url }}" alt="{{ post.data.title }}" />
           </a>
         </div>
         {% endif %}
         <div class="post-card-content">
           <h3>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            <a href="{{ post.url | url }}">{{ post.data.title }}</a>
           </h3>
           <time datetime="{{ post.date }}">{{ post.date | readableDate }}</time>
           <p>{{ post.data.description or (post.templateContent | excerpt) }}</p>
-          <a href="{{ post.url }}" class="read-more">Read more →</a>
+          <a href="{{ post.url | url }}" class="read-more">Read more →</a>
         </div>
       </article>
       {% endfor %}
     </div>
-    <a href="/blog/" class="btn btn-link">View All Posts →</a>
+    <a href="{{ '/blog/' | url }}" class="btn btn-link">View All Posts →</a>
   </div>
 </section>
